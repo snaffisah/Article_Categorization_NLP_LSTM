@@ -219,34 +219,3 @@ class ModelEvaluation():
         print(confusion_matrix(y_true, y_pred))
         print(accuracy_score(y_true, y_pred))
         
-        
-
-# #%%
-
-# if __name__ == '__main__':
-
-#     import os
-#     import pandas as pd 
-    
-#     LOG_PATH = os.path.join(os.getcwd(),'log')
-#     MODEL_SAVE_PATH = os.path.join(os.getcwd(),'Saved_path', 'model.h5')
-#     TOKENIZER_JSON_PATH = os.path.join(os.getcwd(),'Saved_path', 'tokenizer_data.json')
-    
-#     URL = 'https://raw.githubusercontent.com/Ankit152/IMDB-sentiment-analysis/master/IMDB-Dataset.csv'
-    
-#     df = pd.read_csv(URL)
-#     review = df['review']
-#     sentiment = df['sentiment']
-    
-#     #%%
-#     eda = ExploratoryDataAnalysis()
-#     test = eda.remove_tags(review)
-#     test = eda.lower_split(test)
-#     test = eda.sentiment_tokenizer(test, token_save_path=TOKENIZER_JSON_PATH)
-#     test = eda.sentiment_pad_sequence(test)
-    
-#     #%%
-#     nb_categories = len(sentiment.unique())
-#     mc = ModelCreation()
-#     model = mc.lstm_layer(10000, nb_categories)
-#     #model = mc.simple_lstm_layer(10000, nb_categories)
