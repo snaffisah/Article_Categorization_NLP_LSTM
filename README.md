@@ -47,11 +47,12 @@ The classification report, confiusion matrix and accuracy score achieve as below
 <p align="center">
   <img src="https://github.com/snaffisah/Article_Categorization_NLP_LSTM/blob/main/Image/analysis%20report.JPG">
 </p>
+Accuracy 93.7% with fi-score 0.94. yeyyy
 
 ### Result
 By using the created model, a new article was tested and the category was assigned correctly.
 <p align="center">
-  <img "https://github.com/snaffisah/Article_Categorization_NLP_LSTM/blob/main/Image/prediction.JPG">
+  <img src="https://github.com/snaffisah/Article_Categorization_NLP_LSTM/blob/main/Image/prediction.JPG">
 </p>
 
 ### How to run the pythons file:
