@@ -53,7 +53,6 @@ By using the created model, a new article was tested and the category was assign
 <p align="center">
   <img "https://github.com/snaffisah/Article_Categorization_NLP_LSTM/blob/main/Image/prediction.JPG">
 </p>
-
 ### How to run the pythons file:
 1. Load the module 1st by running 'article_categorization_module.py'
 2. Run training file 'article_categorization_train.py' (this step can be skipped)
