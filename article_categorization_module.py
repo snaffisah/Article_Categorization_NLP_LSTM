@@ -183,7 +183,8 @@ class ModelCreation():
         '''
         model = Sequential()
         model.add(Embedding(num_words, embedding_output))
-        model.add(Bidirectional(LSTM(nodes,return_sequences=True)))
+        #model.add(Bidirectional(LSTM(nodes,return_sequences=True)))
+        #model.add(Dense(nodes, activation='relu'))
         model.add(Dropout(dropout))
         model.add(Bidirectional(LSTM(nodes)))
         model.add(Dense(nodes, activation='relu'))

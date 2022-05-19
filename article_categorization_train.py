@@ -86,7 +86,7 @@ x_test = np.expand_dims(x_test, axis=-1)
 x_train = np.asarray(x_train).astype('float32')
 x_test = np.asarray(x_test).astype('float32')
 
-# test the data to get the category matrix
+# test the data to check the category matrix
 print(y_train[0])
 print(one_hot_encoder.inverse_transform(np.expand_dims(y_train[0], axis=0)))
 
