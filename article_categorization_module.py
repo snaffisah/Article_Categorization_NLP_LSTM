@@ -2,6 +2,8 @@
 """
 Created on Thu May 19 10:24:39 2022
 
+This file contain the needed modules to run the train file
+
 @author: snaff
 """
 

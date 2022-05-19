@@ -2,7 +2,7 @@
 """
 Created on Thu May 19 10:32:38 2022
 
-This file will load and train by using dataset of article and its 5 category
+This file will load and train by using dataset of article and its 5 categories
 - Sport
 - Tech
 - Business
@@ -12,9 +12,7 @@ This file will load and train by using dataset of article and its 5 category
 @author: snaff
 """
 
-import re
 import os
-import json
 import datetime
 import numpy as np
 import pandas as pd
@@ -23,18 +21,12 @@ from article_categorization_module import ModelEvaluation
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.callbacks import TensorBoard
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Bidirectional, Embedding
-from tensorflow.keras.layers import Dense, LSTM, Dropout
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.metrics import accuracy_score
+
 
 URL = 'https://raw.githubusercontent.com/susanli2016/PyCon-Canada-2019-NLP-Tutorial/master/bbc-text.csv'
 TOKEN_SAVE_PATH = os.path.join(os.getcwd(),'Saved_path', 'tokenizer_data.json')
-LOG_PATH = os.path.join(os.getcwd(), 'Log')
 MODEL_SAVE_PATH = os.path.join(os.getcwd(),'Saved_path', 'model.h5')
+LOG_PATH = os.path.join(os.getcwd(), 'Log')
 
 # Constant
 num_words = 50000
@@ -59,16 +51,16 @@ df_clean = eda.clean_duplicate(df,keep='first')
 article = df_clean['text']
 category = df_clean['category']
 
+# to calculate no of category
 nb_categories = len(np.unique(category))
 
 # remove tag and convert into lower case then split it in to element in list
 article = eda.remove_tags(article)
-
 article = eda.lower_split(article)
 
 # Step 3) Features Selection
-# Step 4) Data vectorization
 
+# Step 4) Data vectorization
 # Tokenizer steps on the article_clean
 article = eda.sentiment_tokenizer(article, TOKEN_SAVE_PATH,num_words=num_words)
 
@@ -86,6 +78,7 @@ x_train, x_test, y_train, y_test = train_test_split(article, category,
                                                     test_size = 0.3,
                                                     random_state = 100)
 
+# expand dimension into tensor
 x_train = np.expand_dims(x_train, axis=-1)
 x_test = np.expand_dims(x_test, axis=-1)
 
@@ -105,7 +98,6 @@ print(one_hot_encoder.inverse_transform(np.expand_dims(y_train[0], axis=0)))
 
 #%% model creation
 mc = ModelCreation()
-
 model = mc.lstm_layer(num_words, nb_categories)
 
 log_dir = os.path.join(LOG_PATH, 
